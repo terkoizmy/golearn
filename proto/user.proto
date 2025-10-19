@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/terkoizmy/golearn/pkg/pb/user";
+
+// User service definition
+service UserService {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
+}
+
+// Messages
+message GetUserRequest {
+  string user_id = 1;
+}
+
+message GetUserResponse {
+  string id = 1;
+  string email = 2;
+  string name = 3;
+  string created_at = 4;
+}
+
+message ValidateTokenRequest {
+  string token = 1;
+}
+
+message ValidateTokenResponse {
+  bool valid = 1;
+  string user_id = 2;
+  string message = 3;
+}
